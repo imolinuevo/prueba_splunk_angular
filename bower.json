@@ -1,0 +1,22 @@
+{
+  "name": "prueba-splunk-angular",
+  "description": "Integrar SplunkJS mediante directivas de Angular",
+  "main": "",
+  "authors": [
+    "Iñigo Molinuevo"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "angular-jwt": "^0.1.9"
+  }
+}

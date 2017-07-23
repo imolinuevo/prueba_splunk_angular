@@ -1,0 +1,13 @@
+{
+  "name": "prueba-splunk-angular",
+  "version": "1.0.0",
+  "description": "Integrar SplunkJS mediante directivas de Angular",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
+  },
+  "devDependencies": {},
+  "author": "Iñigo Molinuevo",
+  "license": "ISC"
+}
