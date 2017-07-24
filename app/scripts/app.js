@@ -14,9 +14,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     });
   }
 );
-app.run(function($rootScope, $state, UserSession) {
+app.run(function($rootScope, $state, ApiService) {
   $rootScope.$on("$stateChangeStart", function(event, toState) {
-    if(toState.data.authorization && !UserSession.isValid(toState.data.role)) {
+    if(toState.data.authorization && !ApiService.isValidSession(toState.data.role)) {
       event.preventDefault();
       $state.go("login");
     }

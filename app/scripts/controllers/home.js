@@ -4,6 +4,8 @@ function HomeController(HomeService) {
   //Init
   self.homeService = HomeService;
   self.homeService.username = "Bob";
+  self.homeService.getTest();
+  self.homeService.postTest();
   //Fn
 }
 
