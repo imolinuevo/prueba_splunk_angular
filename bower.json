@@ -1,6 +1,6 @@
 {
   "name": "prueba-splunk-angular",
-  "description": "Integrar SplunkJS mediante directivas de Angular",
+  "description": "Aplicación base en Angular que se comunica con una api REST mediante JWT.",
   "main": "",
   "authors": [
     "Iñigo Molinuevo"

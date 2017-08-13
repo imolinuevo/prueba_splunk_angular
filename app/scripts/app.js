@@ -1,4 +1,7 @@
-var app = angular.module("app", ["ui.router", "angular-jwt"]);
+var app = angular.module("app", [
+  "ui.router",
+  "angular-jwt"
+]);
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.hashPrefix("");
     $urlRouterProvider.otherwise("/home");

@@ -1,7 +1,7 @@
 function HomeService(ApiService) {
 
   function getTest() {
-    ApiService.get( ApiService.url + 'test-get/', function(data) {
+    ApiService.get('test-get/', function(data) {
 				console.log(data);
     });
   }
@@ -10,7 +10,7 @@ function HomeService(ApiService) {
     var body = {
       email: "secret"
     };
-    ApiService.post( ApiService.url + 'test-post/', body, function(data) {
+    ApiService.post('test-post/', body, function(data) {
 				console.log(data);
     });
   }

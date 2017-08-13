@@ -1,4 +1,4 @@
-function ApiService($http, $window, jwtHelper) {
+function ApiService($http, $window, jwtHelper, Config) {
 
   function isValidSession(requiredRole) {
     if(service.token) {
@@ -38,7 +38,7 @@ function ApiService($http, $window, jwtHelper) {
 
     $http({
       method: 'GET',
-      url: url,
+      url: Config.API_URL + url,
       headers: headers,
     }).then(function(data, status) {
       if(typeof(callback) != 'undefined') {
@@ -59,7 +59,7 @@ function ApiService($http, $window, jwtHelper) {
 
     $http({
       method: 'POST',
-      url: url,
+      url: Config.API_URL + url,
       headers: headers,
       transformRequest: function(obj) {
         var str = [];
@@ -77,7 +77,6 @@ function ApiService($http, $window, jwtHelper) {
 
   var token = $window.localStorage.getItem('token') || null;
   var service = {
-    url: 'http://localhost:8000/dj/en-us/prueba/',
     token: null,
     isValidSession: isValidSession,
     setSession: setSession,

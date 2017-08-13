@@ -1,3 +1,3 @@
-# Prueba de concepto AngularJS + SplunkJS
+# Prueba de concepto AngularJS + Django + Splunk
 
-Integrar SplunkJS mediante directivas de Angular.
+Aplicación base en Angular que se comunica con una api REST mediante JWT. 
