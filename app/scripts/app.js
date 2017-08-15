@@ -2,7 +2,8 @@ var app = angular.module("app", [
   "ui.router",
   "angular-jwt"
 ]);
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.hashPrefix("");
     $urlRouterProvider.otherwise("/home");
     $stateProvider
