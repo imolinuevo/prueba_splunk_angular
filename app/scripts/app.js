@@ -1,6 +1,7 @@
 var app = angular.module("app", [
   "ui.router",
-  "angular-jwt"
+  "angular-jwt",
+  "ngMaterial"
 ]);
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) {
     $qProvider.errorOnUnhandledRejections(false);

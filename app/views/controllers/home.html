@@ -1,2 +1,26 @@
-<h1>Home</h1>
-<p>Username: {{self.homeService.username}}</p>
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Home</span>
+      <span class="md-subhead">Tell us a little about you {{self.homeService.username}}.</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <div layout="row">
+      <md-input-container>
+        <label>Street Name</label>
+        <input>
+      </md-input-container>
+      <md-input-container>
+        <label>City</label>
+        <input>
+      </md-input-container>
+    </div>
+    <div layout-gt-xs="row">
+      <div flex-gt-xs>
+        <h4>Standard date-picker</h4>
+        <md-datepicker ng-model="self.myDate" md-placeholder="Enter date"></md-datepicker>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
