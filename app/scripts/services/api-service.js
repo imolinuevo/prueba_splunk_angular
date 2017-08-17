@@ -75,9 +75,20 @@ function ApiService($http, $window, jwtHelper, Config) {
     });
   }
 
+  function authJwt(username, password) {
+    var body = {
+      username: username,
+      password: password
+    };
+    post('auth-jwt/', body, function(response) {
+      service.token = response.data.token;
+    });
+  }
+
   var token = $window.localStorage.getItem('token') || null;
   var service = {
     token: null,
+    authJwt: authJwt,
     isValidSession: isValidSession,
     setSession: setSession,
     deleteSession: deleteSession,
