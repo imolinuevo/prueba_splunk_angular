@@ -14,7 +14,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $qPro
       controllerAs: "self",
       templateUrl: "app/views/controllers/home.html",
       data: {
-        authorization: false
+        authorization: true,
+        role: "admin"
       }
     });
   }

@@ -3,7 +3,7 @@ function ApiService($http, $window, jwtHelper, Config) {
   function isValidSession(requiredRole) {
     if(service.token) {
       if(!jwtHelper.isTokenExpired(service.token)) {
-        var roles = JSON.parse(jwtHelper.decodeToken(service.token).roles);
+        var roles = jwtHelper.decodeToken(service.token).roles;
         if(roles.includes(requiredRole)) {
           return true;
         } else {
@@ -81,13 +81,13 @@ function ApiService($http, $window, jwtHelper, Config) {
       password: password
     };
     post('auth-jwt/', body, function(response) {
-      service.token = response.data.token;
+      setSession(response.data.token);
     });
   }
 
   var token = $window.localStorage.getItem('token') || null;
   var service = {
-    token: null,
+    token: token,
     authJwt: authJwt,
     isValidSession: isValidSession,
     setSession: setSession,
