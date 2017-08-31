@@ -7,7 +7,6 @@ function HomeController(HomeService, ApiService) {
   self.homeService.username = "Bob";
   self.homeService.getTest();
   self.homeService.postTest();
-  //ApiService.authJwt("admin", "changeme");
   //Fn
 }
 

@@ -1,4 +1,4 @@
-function ApiService($http, $window, jwtHelper, Config) {
+function ApiService($http, $window, $state, $mdToast, jwtHelper, Config) {
 
   function isValidSession(requiredRole) {
     if(service.token) {
@@ -28,14 +28,11 @@ function ApiService($http, $window, jwtHelper, Config) {
     service.token = null;
   }
 
-  function get(url, callback) {
-
+  function get(url, callback, errorCallback) {
     var headers = {}
-
     if(service.token !== null) {
       headers.Authorization = 'Bearer ' + service.token;
     }
-
     $http({
       method: 'GET',
       url: Config.API_URL + url,
@@ -44,33 +41,39 @@ function ApiService($http, $window, jwtHelper, Config) {
       if(typeof(callback) != 'undefined') {
         callback(data, status);
       }
+    }, function(data, status) {
+      if(typeof(errorCallback) != 'undefined') {
+        errorCallback(data, status);
+      }
     });
   }
 
-  function post(url, data, callback) {
-
+  function post(url, data, callback, errorCallback) {
     var headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
-
     if(service.token !== null) {
       headers.Authorization = 'Bearer ' + service.token;
     }
-
     $http({
       method: 'POST',
       url: Config.API_URL + url,
       headers: headers,
       transformRequest: function(obj) {
         var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        for(var p in obj) {
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
         return str.join("&");
       },
       data: data,
     }).then(function(data, status) {
       if(typeof(callback) != 'undefined') {
         callback(data, status);
+      }
+    }, function(data, status) {
+      if(typeof(errorCallback) != 'undefined') {
+        errorCallback(data, status);
       }
     });
   }
@@ -82,9 +85,15 @@ function ApiService($http, $window, jwtHelper, Config) {
     };
     post('auth-jwt/', body, function(response) {
       setSession(response.data.token);
+      $state.go("home");
+    }, function() {
+      $mdToast.show({
+        template: '<md-toast>Invalid username or password</md-toast>',
+        hideDelay: 2000,
+        position: 'top right'
+      });
     });
   }
-
   var token = $window.localStorage.getItem('token') || null;
   var service = {
     token: token,

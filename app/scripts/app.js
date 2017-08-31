@@ -8,6 +8,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $qPro
     $locationProvider.hashPrefix("");
     $urlRouterProvider.otherwise("/home");
     $stateProvider
+    .state("login", {
+      url: "/login",
+      controller: "LoginController",
+      controllerAs: "self",
+      templateUrl: "app/views/controllers/login.html",
+      data: {
+        authorization: false
+      }
+    })
     .state("home", {
       url: "/home",
       controller: "HomeController",
