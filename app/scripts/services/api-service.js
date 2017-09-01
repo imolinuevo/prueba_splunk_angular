@@ -2,7 +2,7 @@ function ApiService($http, $window, $state, $mdToast, jwtHelper, Config) {
 
   function isValidSession(requiredRole) {
     if(service.token) {
-      if(!jwtHelper.isTokenExpired(service.token)) {
+      if(new Date() < new Date(jwtHelper.decodeToken(service.token).expirity)) {
         var roles = jwtHelper.decodeToken(service.token).roles;
         if(roles.includes(requiredRole)) {
           return true;
